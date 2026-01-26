@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List 실습</title>
+  <link rel="stylesheet" href="./todolist.css" />
+</head>
+<body class="page">
+  <div class="todo">
+    <h1 class="todo__title">나의 Todo List</h1>
+
+    <div class="todo__input-group">
+      <input
+        class="todo__input"
+        id="todo-input"
+        type="text"
+        placeholder="새로운 할 일을 추가하세요"
+      />
+      <button class="todo__add-btn" id="add-btn">추가</button>
+    </div>
+
+    <ul class="todo__list" id="todo-list"></ul>
+  </div>
+
+  <script src="./todolist.js"></script>
+</body>
+</html>
