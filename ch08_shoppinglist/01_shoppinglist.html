@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛒 나의 Shopping List</title>
+  <link rel="stylesheet" href="./01_shoppinglist.css" />
+</head>
+<body class="page">
+  <main class="shopping">
+    <h1 class="shopping__title">🛒 나의 Shopping List</h1>
+
+    <form class="shopping__input-group" id="shopping-form">
+      
+      <div class="shopping__input-wrapper">
+        <label for="item-name" class="visually-hidden">상품명</label>
+        <input class="shopping__input shopping__input--name" id="item-name" type="text" placeholder="상품명 (예: 삼겹살)" required />
+      </div>
+
+      <div class="shopping__input-wrapper">
+        <label for="item-qty" class="visually-hidden">수량 또는 무게</label>
+        <div class="qty-container" style="display: flex; gap: 5px;">
+          <input class="shopping__input shopping__input--qty" id="item-qty" type="number" min="0.1" step="0.1" value="1" required />
+          
+          <select class="shopping__input shopping__input--unit" id="item-unit">
+            <option value="개">개</option>
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="팩">팩</option>
+            <option value="봉지">봉지</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="shopping__input-wrapper">
+        <label for="item-price" class="visually-hidden">가격</label>
+        <input class="shopping__input shopping__input--price" id="item-price" type="number" min="0" placeholder="가격(원)" required />
+      </div>
+
+      <button type="submit" class="shopping__add-btn">담기</button>
+    </form>
+
+    <ul class="shopping__list" id="shopping-list" aria-live="polite">
+      </ul>
+
+    <section class="shopping__total-section">
+      <span>총 합계:</span>
+      <strong id="total-price" class="shopping__total-amount">0원</strong>
+    </section>
+  </main>
+
+  <script src="./01_shoppinglist.js"></script>
+</body>
+</html>

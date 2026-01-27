@@ -1,0 +1,208 @@
+/* 1. 전체적인 색감 테마 */
+:root {
+  --main-bg: #f8ecee;
+  --card-bg: #2d2d2d;
+  --accent-color: #ff7eb9;
+  --input-bg: #3d3d3d;
+  --text-white: #f5f5f5;
+  --text-dim: #b0b0b0;
+  --danger-color: #ff4d4d;
+}
+
+body {
+  background-color: var(--main-bg);
+  background-image: radial-gradient(#e2d1d4 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+}
+
+/* 접근성: 라벨 숨김 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.shopping {
+  background-color: var(--card-bg);
+  width: 90%;
+  max-width: 400px;
+  padding: 300px; /* 오타 수정: 원래 30px이 적당합니다 */
+  padding: 30px; 
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  color: var(--text-white);
+}
+
+.shopping__title {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* 2. 입력 그룹 레이아웃 */
+.shopping__input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.shopping__input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 수량과 단위를 가로로 나열 */
+.qty-container {
+  display: flex;
+  gap: 5px;
+}
+
+.shopping__input {
+  background: var(--input-bg);
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  outline: none;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.shopping__input:focus {
+  border-color: var(--accent-color);
+  background: #454545;
+  box-shadow: 0 0 8px rgba(255, 126, 185, 0.2);
+}
+
+/* 가로 비율 조정 */
+.shopping__input--name { flex: 1 1 100%; } 
+.shopping__input--qty { flex: 2; width: 60px; }
+.shopping__input--unit { flex: 1; min-width: 70px; cursor: pointer; }
+.shopping__input--price { flex: 1; width: 100%; }
+
+.shopping__add-btn {
+  flex: 1 1 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #ff7eb9, #ff65a3);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.shopping__add-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.shopping__add-btn:active {
+  transform: scale(0.96);
+}
+
+/* 3. 리스트 영역 */
+.shopping__list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--input-bg) transparent;
+}
+
+.shopping__list::-webkit-scrollbar { width: 4px; }
+.shopping__list::-webkit-scrollbar-thumb { background: var(--input-bg); border-radius: 10px; }
+
+.shopping__item {
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-info small {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.shopping__delete-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: var(--danger-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.shopping__delete-btn:hover {
+  background: var(--danger-color);
+  color: white;
+}
+
+/* 4. 합계 부분 */
+.shopping__total-section {
+  text-align: right;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.shopping__total-amount {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-left: 10px;
+}
+
+/* 5. 파티클 애니메이션 */
+.confetti {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: explode 0.6s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes explode {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
